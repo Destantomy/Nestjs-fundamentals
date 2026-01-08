@@ -11,7 +11,8 @@ export class HeroController {
  }
 
  @Get('create') // this when we try to return value as primitive data, like string
- create(): string {
+ create(@Res({ passthrough: true }) response): string {
+    response.cookie('name', 'desta');
     return 'hello create'
  }
 }
