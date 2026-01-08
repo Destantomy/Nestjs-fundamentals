@@ -1,0 +1,5 @@
+- to run library nestjs/cli globally, install the library using command: npm install -g @nestjs/cli
+- for command guid run: nest --help / nest generate --help
+- to install nestjs and start using new project run command: nest new project-name
+- to run the app use this standard command : npm run start; while to make the system automatically monitoring the running app if any data change use this command: npm run start:dev;
+- 

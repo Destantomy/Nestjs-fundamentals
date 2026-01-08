@@ -1,0 +1,5 @@
+- app.controller.ts : this file is used to handle our logic, such as request handling based on http declared. In the other word, this file becoming the bridge between routing url and data logic that directly handled from service app.
+- app.controller.specs.ts : this file is used to see the result as controller running test.
+- app.service.ts : this file is containing data service method based. It will make a functionality, returning something, giving back a response, then this reponse will use as a return value information while the app is running.
+- app.module.ts : this file is used to compile all the parts of the module to build a complete app.
+- main.ts : this file bacome the main instance of the app, where the first compiled is in 3000's port.
