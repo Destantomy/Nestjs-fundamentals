@@ -5,4 +5,4 @@
 - main.ts : this file bacome the main instance of the app, where the first compiled is in 3000's port.
 
 -> controller : it has responsibility to handling incoming request then giving the response to client. Routing mechanism in Nestjs able to determine which controller that will receive and handling incoming request. Every controller could have more than one url routes and each route could did various job. In order to make basic controller we could use class and decorator. A decorator marked with syntax @ (ex: @Controller, @Get, @Post, etc). This decorator will reference into a class with defining a required meta data which we can use it to describe data and process it into a information as return value. 
-->  
+-> we could set a prefix routing inside the decorator and applied like this: @Controller('hero')
