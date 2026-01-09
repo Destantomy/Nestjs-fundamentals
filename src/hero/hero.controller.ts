@@ -14,27 +14,18 @@ import {
 } from '@nestjs/common';
 import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
-
-let heroes = [
-  {
-    id: 1,
-    name: 'desta',
-    type: 'warrior',
-  },
-  {
-    id: 2,
-    name: 'diva',
-    type: 'spell',
-  },
-];
+import { HeroService } from './hero.service';
 
 @Controller('hero')
 export class HeroController {
+  // this constructor is used to accessing data heroes from service
+  constructor(private heroService: HeroService) {}
+
   @Get('index') // this when we try to return value as a object and also return the http response code
   @HttpCode(200)
   @Header('Content-Type', 'application/json')
   index(@Res() response) {
-    response.json(heroes);
+    response.json(this.heroService.findAll());
   }
 
   @Get('create') // this when we try to return value as primitive data, like string
@@ -58,15 +49,16 @@ export class HeroController {
     //    data: request.body
     // }
     try {
-      const { id, name, type } = request.body;
-      heroes.push({
-        id,
-        name,
-        type,
-      });
+      // const { id, name, type } = request.body;
+      // heroes.push({
+      //   id,
+      //   name,
+      //   type,
+      // });
       // return name;
       // return heroes;
-      return CreateHeroDto;
+      this.heroService.create(CreateHeroDto);
+      return this.heroService.findAll();
     } catch (error) {
       response.status(500).json({ message: error }); // error httpCode become 500
     }
@@ -86,7 +78,7 @@ export class HeroController {
 
   //  specified way
   detail(@Param('id') id: number) {
-    const hero = heroes.filter((hero) => {
+    const hero = this.heroService.findAll().filter((hero) => {
       return hero.id == id;
     });
     //  return hero; // <-- it will return as array object
@@ -95,7 +87,7 @@ export class HeroController {
 
   @Put('update/:id')
   update(@Param('id') id: number, @Body() updateHeroDto: UpdateHeroDto) {
-    heroes.filter((hero) => {
+    this.heroService.findAll().filter((hero) => {
       if (hero.id == id) {
         if (updateHeroDto.name != undefined) {
           hero.name = updateHeroDto.name;
@@ -105,12 +97,12 @@ export class HeroController {
         }
       }
     });
-    return heroes;
+    return this.heroService.findAll();
   }
 
   @Delete('delete/:id')
   delete(@Param('id') id: number) {
-    const hero = heroes.filter((hero) => {
+    const hero = this.heroService.findAll().filter((hero) => {
       return hero.id != id;
     });
     return hero;
