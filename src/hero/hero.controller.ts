@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Req, Res, Body } from "@nestjs/common";
+import { Controller, Get, Post, HttpCode, Req, Res, Body, Header, Redirect } from "@nestjs/common";
 
 let heroes = [
    {
@@ -17,6 +17,7 @@ let heroes = [
 export class HeroController {
  @Get('index') // this when we try to return value as a object and also return the http response code
  @HttpCode(200)
+ @Header('Content-Type', 'application/json')
  index(@Res() response) {
     response.json(heroes);
  }
@@ -28,16 +29,27 @@ export class HeroController {
  }
 
  @Post('store')
+ @HttpCode(201) // if data valid then this code will send
  store(@Req() request, @Res({ passthrough: true }) response) {
    // response.status(201).json({ data: request.body }); // <-- library specific way
    // below are using standard default
    // return {
    //    data: request.body
    // }
-   const { id, name, type } = request.body;
-   heroes.push({
+   try {
+      const { id, name, type } = request.body;
+      heroes.push({
       id, name, type
    });
    return heroes;
+   } catch (error) {
+     response.status(500).json({ message: error }); // error httpCode become 500
+   }
+ }
+
+ @Get('welcome')
+ @Redirect('https://docs.nestjs.com/')
+ hello() {
+   return 'welcome!'
  }
 }
