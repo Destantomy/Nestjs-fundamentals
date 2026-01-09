@@ -48,7 +48,7 @@ export class HeroController {
  }
 
  @Get('welcome')
- @Redirect('https://docs.nestjs.com/')
+ @Redirect('https://docs.nestjs.com')
  hello() {
    return 'welcome!'
  }
