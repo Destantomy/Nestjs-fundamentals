@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Put,
+  Delete,
   HttpCode,
   Req,
   Res,
@@ -105,5 +106,13 @@ export class HeroController {
       }
     });
     return heroes;
+  }
+
+  @Delete('delete/:id')
+  delete(@Param('id') id: number) {
+    const hero = heroes.filter((hero) => {
+      return hero.id != id;
+    });
+    return hero;
   }
 }
