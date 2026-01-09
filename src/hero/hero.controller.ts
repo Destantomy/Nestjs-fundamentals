@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Req, Res, Body, Header, Redirect } from "@nestjs/common";
+import { Controller, Get, Post, HttpCode, Req, Res, Body, Header, Redirect, Param } from "@nestjs/common";
 
 let heroes = [
    {
@@ -51,5 +51,16 @@ export class HeroController {
  @Redirect('https://docs.nestjs.com')
  hello() {
    return 'welcome!'
+ }
+
+ @Get('detail/:id')
+//  common
+// detail(@Param() params) {
+//    return `hero's ${params.id}`;
+//  }
+
+//  specified way
+ detail(@Param('id') id: string) {
+   return `hero's ${id}`;
  }
 }
