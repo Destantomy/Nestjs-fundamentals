@@ -3,3 +3,4 @@
 - to install nestjs and start using new project run command: nest new project-name
 - to run the app use this standard command : npm run start; while to make the system automatically monitoring the running app if any data change use this command: npm run start:dev;
 - Nestjs providing CLI to generate too to generate any folder, such as for making controller: nest generate controller controller-name; then it will automatically make the folder for the wrote controller name, the configuration and it's contains files. It similiary with PHP Laravel's : php artisan make: ...
+- to install validation pipe module use this command: npm i --save class-validator class-transformer; validation pipe is used to handling validation data as response data user was sent based on DTO declared.
