@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Put,
   HttpCode,
   Req,
   Res,
@@ -11,6 +12,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { CreateHeroDto } from './dto/create-hero.dto';
+import { UpdateHeroDto } from './dto/update-hero.dto';
 
 let heroes = [
   {
@@ -55,12 +57,12 @@ export class HeroController {
     //    data: request.body
     // }
     try {
-      // const { id, name, type } = request.body;
-      // heroes.push({
-      //   id,
-      //   name,
-      //   type,
-      // });
+      const { id, name, type } = request.body;
+      heroes.push({
+        id,
+        name,
+        type,
+      });
       // return name;
       // return heroes;
       return CreateHeroDto;
@@ -88,5 +90,20 @@ export class HeroController {
     });
     //  return hero; // <-- it will return as array object
     return hero[0]; // <-- it will return 1st data found as object
+  }
+
+  @Put('update/:id')
+  update(@Param('id') id: number, @Body() updateHeroDto: UpdateHeroDto) {
+    heroes.filter((hero) => {
+      if (hero.id == id) {
+        if (updateHeroDto.name != undefined) {
+          hero.name = updateHeroDto.name;
+        }
+        if (updateHeroDto.type != undefined) {
+          hero.type = updateHeroDto.type;
+        }
+      }
+    });
+    return heroes;
   }
 }
