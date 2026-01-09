@@ -82,7 +82,11 @@ export class HeroController {
   //  }
 
   //  specified way
-  detail(@Param('id') id: string) {
-    return `hero's ${id}`;
+  detail(@Param('id') id: number) {
+    const hero = heroes.filter((hero) => {
+      return hero.id == id;
+    });
+    //  return hero; // <-- it will return as array object
+    return hero[0]; // <-- it will return 1st data found as object
   }
 }
