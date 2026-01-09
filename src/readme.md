@@ -4,6 +4,8 @@
 - app.module.ts : this file is used to compile all the parts of the module to build a complete app.
 - main.ts : this file bacome the main instance of the app, where the first compiled is in 3000's port.
 
--> controller : it has responsibility to handling incoming request then giving the response to client. Routing mechanism in Nestjs able to determine which controller that will receive and handling incoming request. Every controller could have more than one url routes and each route could did various job. In order to make basic controller we could use class and decorator. A decorator marked with syntax @ (ex: @Controller, @Get, @Post, etc). This decorator will reference into a class with defining a required meta data which we can use it to describe data and process it into a information as return value. 
--> we could set a prefix routing inside the decorator and applied like this: @Controller('hero')
--> Nest will always detect while handling response using decorator @Res or @Next which it was an specific-library. In order to pass the code with no running error and also register the cookies while we were using specified-library such as @Res decorator we need a syntax passthrough: true to complete run the code.
+- controller : it has responsibility to handling incoming request then giving the response to client. Routing mechanism in Nestjs able to determine which controller that will receive and handling incoming request. Every controller could have more than one url routes and each route could did various job. In order to make basic controller we could use class and decorator. A decorator marked with syntax @ (ex: @Controller, @Get, @Post, etc). This decorator will reference into a class with defining a required meta data which we can use it to describe data and process it into a information as return value. 
+- we could set a prefix routing inside the decorator and applied like this: @Controller('hero')
+- Nest will always detect while handling response using decorator @Res or @Next which it was an specific-library. In order to pass the code with no running error and also register the cookies while we were using specified-library such as @Res decorator we need a syntax passthrough: true to complete run the code.
+
+- a handler often need request detail from client, we could add the detail using decorator @Req

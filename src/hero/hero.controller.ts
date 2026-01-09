@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, Res } from "@nestjs/common";
+import { Controller, Get, Post, HttpCode, Req, Res, Body } from "@nestjs/common";
 
 @Controller('hero')
 export class HeroController {
@@ -14,5 +14,14 @@ export class HeroController {
  create(@Res({ passthrough: true }) response): string {
     response.cookie('name', 'desta');
     return 'hello create'
+ }
+
+ @Post('store')
+ store(@Req() request, @Res({ passthrough: true }) response) {
+   // response.status(201).json({ data: request.body }); // <-- library specific way
+   // below are using standard default
+   return {
+      data: request.body
+   }
  }
 }
