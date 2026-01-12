@@ -6,3 +6,4 @@
 - to install validation pipe module use this command: npm i --save class-validator class-transformer; validation pipe is used to handling validation data as response data user was sent based on DTO declared.
 - providers : provider main task is to regist a dependency as a part of connection object to each other.
 - service : to generate service file we can use this cli -> nest generate service service-name;
+- module : to generate module using cli we can use this command : nest generate module module-name;
