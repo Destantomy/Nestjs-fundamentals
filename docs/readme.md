@@ -18,3 +18,4 @@
   -> nest g controller auth
   -> nest g service auth
   -> to genereate dto file inside the src/auth : nest g class auth/dto --no-spec; absolutely you could modify it based on your desire. Why it using class not dto? because in Nest dto is a class, it used by class-validator, class-transformer, type safety. Nest cli had no dto's specialized cli.
+- to install jwt and start generate token : npm install --save @nestjs/jwt
