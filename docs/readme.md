@@ -7,7 +7,7 @@
 - providers : provider main task is to regist a dependency as a part of connection object to each other.
 - service : to generate service file we can use this cli -> nest generate service service-name;
 - module : to generate module using cli we can use this command : nest generate module module-name;
-- prisma : is an open source ORM for Node.js and TypeScript. It is used to writting sql syntax or to make database connection using query. Currently prisma supports PostgreSQL, MySql, and MongoDB. To install prisma use this command : npm install prisma --save-dev; -> use this command then: npx prisma init to make a prisma directory file.
+- prisma : is an open source ORM for Node.js and TypeScript. It is used to writting sql syntax or to make database connection using query. Currently prisma supports PostgreSQL, MySql, and MongoDB. To install prisma with latest version use this command : npm install prisma --save-dev; -> use this command then: npx prisma init to make a prisma directory file. But in this tutorial i used this version by running this cli : npm install prisma@5 @prisma/client@5 (to install Prisma CLI (migrate, generate, studio) using command prisma@5 and Prisma Client (runtime ORM) using command @prisma/client@5)
 - to migrate table in prisma : npx prisma migrate dev --name init; -> to check is database already correct with our idea run this command to check the prisma studio online: npx prisma studio
 - to generate prisma client : npx prisma generate; simply prisma client is used to communicate with our database secure and safely.
 - to generate resource : nest g resource resource_name
