@@ -12,3 +12,8 @@
 - to generate prisma client : npx prisma generate; simply prisma client is used to communicate with our database secure and safely.
 - to generate resource : nest g resource resource_name
 - to install bcryptjs : npm i bcryptjs
+
+- to generate an authentication modul run these cli syntaxs these syntaxs must be run sequently :
+  -> nest g module auth
+  -> nest g controller auth
+  -> nest g service auth
