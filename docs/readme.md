@@ -11,3 +11,4 @@
 - to migrate table in prisma : npx prisma migrate dev --name init; -> to check is database already correct with our idea run this command to check the prisma studio online: npx prisma studio
 - to generate prisma client : npx prisma generate; simply prisma client is used to communicate with our database secure and safely.
 - to generate resource : nest g resource resource_name
+- to install bcryptjs : npm i bcryptjs
