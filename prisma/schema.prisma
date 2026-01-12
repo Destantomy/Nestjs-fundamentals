@@ -16,8 +16,8 @@ datasource db {
 // syntax below is used to migrate a table data into database
 model User {
   id Int @default(autoincrement()) @id
-  email String
-  name String
+  email String @unique
+  name String @unique
   password String
   active Boolean @default(false)
   createdAt DateTime @default(now())

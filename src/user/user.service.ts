@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma.service';
@@ -10,6 +14,16 @@ export class UserService {
 
   // this register function is run asyncronously
   async register(dto: CreateUserDto) {
+    const emailCheck = await this.findByEmail(dto.email);
+    if (emailCheck) {
+      throw new ConflictException('email already exist');
+    }
+
+    const nameCheck = await this.findByName(dto.name);
+    if (nameCheck) {
+      throw new ConflictException('name already taken');
+    }
+
     const newUser = await this.prisma.user.create({
       data: {
         ...dto, // this will take all data inputted by using rest operator
@@ -28,6 +42,24 @@ export class UserService {
 
   findAll() {
     return `This action returns all user`;
+  }
+
+  async findByEmail(email: string) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+    return user;
+  }
+
+  async findByName(name: string) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        name,
+      },
+    });
+    return user;
   }
 
   async findOne(id: number) {
